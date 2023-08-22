@@ -46,6 +46,8 @@ export const Customizer = () => {
     }
   }
 
+
+
   const handleSubmit = async (type) => {
     if (!prompt) return alert('Please enter a prompt')
 
@@ -138,6 +140,12 @@ export const Customizer = () => {
           <motion.div className='absolute z-10 top-5 right-5' {...fadeAnimation}>
             <CustomButton
               type='filled'
+              title='Download'
+              handleClick={() => downloadCanvasToImage()}
+              customStyles='w-fit px-4 py-2.5 font-bold text-sm mr-2'
+            />
+            <CustomButton
+              type='filled'
               title='Go Back'
               handleClick={() => state.intro = true}
               customStyles='w-fit px-4 py-2.5 font-bold text-sm'
@@ -157,7 +165,9 @@ export const Customizer = () => {
           </motion.div>
         </>
       )}
+
     </AnimatePresence>
+
   )
 }
 
