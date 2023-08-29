@@ -19,4 +19,4 @@ by default the application will run on `localhost:8000`.
 
 
 ## Project Reference
-This project has an occompaning [server application](https://github.com/Azrihell/AI-Image-Generator-Server) that you'll need in order to fully engage with the application. 
+This project has an occompaning [server application](https://github.com/Azrihell/Ai-TShirt-App-Server) that you'll need in order to fully engage with the application. 
