@@ -1,13 +1,18 @@
-import React, { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useSnapshot } from 'valtio'
-import config from '../config/config'
 import state from '../store'
-import { download } from '../assets'
 import { downloadCanvasToImage, reader } from '../config/helpers'
 import { EditorTabs, FilterTabs, DecalTypes } from '../config/constants'
 import { fadeAnimation, slideAnimation } from '../config/motion'
 import { AiPicker, ColorPicker, CustomButton, FilePicker, Tab } from '../components'
+
+const baseURL = () => {
+  if (import.meta.env.MODE === "production") {
+    return 'https://ai-image-generator-server-gamma.vercel.app'
+  }
+  return 'http://localhost:3000'
+}
 
 export const Customizer = () => {
   const snap = useSnapshot(state)
@@ -46,15 +51,13 @@ export const Customizer = () => {
     }
   }
 
-
-
   const handleSubmit = async (type) => {
     if (!prompt) return alert('Please enter a prompt')
 
     try {
       setGeneratingImg(true)
 
-      const response = await fetch('http://localhost:8080/api/v1/dalle', {
+      const response = await fetch(`${baseURL()}/api/v1/dalle`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -100,7 +103,6 @@ export const Customizer = () => {
     }
 
     // after setting state, activeFilterTab is updated
-
     setActiveFilterTab((prevState) => {
       return {
         ...prevState,
@@ -167,7 +169,6 @@ export const Customizer = () => {
       )}
 
     </AnimatePresence>
-
   )
 }
 
