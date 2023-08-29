@@ -9,7 +9,7 @@ import { AiPicker, ColorPicker, CustomButton, FilePicker, Tab } from '../compone
 
 const baseURL = () => {
   if (import.meta.env.MODE === "production") {
-    return 'https://ai-image-generator-server-gamma.vercel.app'
+    return 'https://ai-t-shirt-app-server.vercel.app'
   }
   return 'http://localhost:3000'
 }
